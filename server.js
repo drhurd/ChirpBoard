@@ -25,15 +25,15 @@ var server = app.listen(config.port, config.ip, function () {
 var io = require('socket.io').listen(server);
 
 // Set up twitter streaming 
-var Twit = require('twit');
+var Twit = require('node-tweet-stream');
 var twitterService = require('./lib/services/twitterService');
-var twit = new Twit({
+var t = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY
   , consumer_secret: process.env.TWITTER_CONSUMER_SECRET
-  , access_token: process.env.TWITTER_ACCESS_TOKEN
-  , access_token_secret: process.env.TWITTER_TOKEN_SECRET
+  , token: process.env.TWITTER_ACCESS_TOKEN
+  , token_secret: process.env.TWITTER_TOKEN_SECRET
 });
-twitterService(io, twit);
+twitterService(io, t);
 
 // Expose app
 exports = module.exports = app;

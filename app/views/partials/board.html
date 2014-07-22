@@ -1,22 +1,41 @@
 <div ng-include="'partials/navbar'"></div>
 
-<!-- <div class="container">
-	<ul>
-		<li ng-repeat="tweet in tweets">{{ tweet.sentiment }}</li>
-	</ul>
-</div>
- -->
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <div class="grid">
-      <div class="grid-item" ng-repeat="tweet in tweets"></div>
-    </div>
-  </div>
+<!-- Input Row -->
+<div class="row">
+	<div class="col-xs-12">
+		<div class="input-group">
 
-  <!-- List group -->
-  <div class="grid">
-  	<div class="grid-item"></div>
-  </div>
+			<!-- Panel input -->
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="track(term)">Track</button>
+			</span>
+			<input type="text" class="form-control" ng-model="term">
+		</div>
+	</div>
 </div>
+
+
+<!-- Grid and tracking row -->
+<div class="row">
+	<!-- Tracking Sidebar -->
+	<div class="col-xs-4">
+
+		<!-- Term List -->
+		<ul class="list-group">
+		  <li class="list-group-item" ng-repeat="term in terms">
+		    {{ term }}
+		    <!-- Remove button -->
+		    <div class="pull-right" ng-click="untrack(term)"><span class="glyphicon glyphicon-minus"></span></div>
+		  </li>
+		</ul>
+	</div>
+
+
+	<!-- The Grid -->
+	<div class="col-xs-8">
+		<div class="grid">
+			<div class="grid-item" ng-repeat="tweet in tweets" ng-class="color(tweet)"></div>
+		</div>
+	</div>
+</div>
+
