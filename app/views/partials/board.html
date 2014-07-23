@@ -37,10 +37,10 @@
 		<h3>Tracking:</h3>
 		<!-- Term List -->
 		<ul class="list-group">
-		  <li class="list-group-item" ng-repeat="term in terms">
+		  <li class="list-group-item clearfix" ng-repeat="term in terms">
 		    {{ term }}
 		    <!-- Remove button -->
-		    <div class="pull-right" ng-click="untrack(term)"><span class="glyphicon glyphicon-minus"></span></div>
+		    <button class="pull-right btn-xs btn-danger" style="border:none;" ng-click="untrack(term)"><span class="glyphicon glyphicon-minus"></span></button>
 		  </li>
 		</ul>
 	</div>
