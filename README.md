@@ -3,7 +3,7 @@ ChirpBoard
 
 Real time tweet streaming
 
-Chirpboard is a one-page webapp that will livestream tweets you search for through AlchemyAPI(http://alchemyapi.com) sentiment analysis and flash them on the grid. They're color-coded by whether they're positive, negative, or neutral.
+Chirpboard is a angularJS application that will livestream tweets you search for through AlchemyAPI(http://alchemyapi.com) sentiment analysis. The grid is color-coded by positive, negative, or neutral tweets.
 
 I started this project at MHacks (Fall 2013), but I've rebuilt it to make the UI better and to learn angularJS.
 
@@ -18,11 +18,11 @@ Install the dependencies:
 
 Set your environment variables:
 
-ALCHEMY_API_TOKEN
-TWITTER_CONSUMER_KEY
-TWITTER_CONSUMER_SECRET
-TWITTER_ACCESS_TOKEN
-TWITTER_ACCESS_SECRET
+	ALCHEMY_API_TOKEN
+	TWITTER_CONSUMER_KEY
+	TWITTER_CONSUMER_SECRET
+	TWITTER_ACCESS_TOKEN
+	TWITTER_ACCESS_SECRET
 
 To run
 
