@@ -25,8 +25,8 @@ var server = app.listen(config.port, config.ip, function () {
 var io = require('socket.io').listen(server);
 
 // Set up twitter streaming 
-var Twit = require('node-tweet-stream');
-var t = new Twit({
+var TweetStream = require('node-tweet-stream');
+var t = new TweetStream({
     consumer_key: process.env.TWITTER_CONSUMER_KEY
   , consumer_secret: process.env.TWITTER_CONSUMER_SECRET
   , token: process.env.TWITTER_ACCESS_TOKEN

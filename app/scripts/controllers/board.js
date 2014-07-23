@@ -12,7 +12,8 @@ angular.module('chirpBoardApp')
     var socket = socketFactory();
 
     $scope.term = '';
-    $scope.tweets = [];
+    $scope.tweets = []; // for the grid
+    $scope.tweetList = []; // for the tweet list
     $scope.currentTweet = null;
     $scope.terms = [];
 
@@ -30,29 +31,33 @@ angular.module('chirpBoardApp')
     };
 
     // handle new tweets
-    var i = 0;
-    var max = 50;
+    var tweetsIdx = 0;
+    var tweetsMax = 50;
+    var tweetListIdx = 0;
+    var tweetListMax = 6;
     socket.on('tweet', function(tweet){
         console.log(tweet);
 
-        if ($scope.tweets.length < max) {
+        // update the grid tweets
+        if ($scope.tweets.length < tweetsMax) {
             // fill up the array
             $scope.tweets.push(tweet);
         }
         else {
-            // replace tweet
-            $scope.tweets.splice(i, 1, tweet);
+            // replace tweet, rotate idx
+            $scope.tweets.splice(tweetsIdx++, 1, tweet);
+            tweetsIdx = tweetsIdx%tweetsMax;
         }
 
-        // 
-        i++;
-        if (i >= max) {
-            i = 0;
+        // update the tweet list
+        if ($scope.tweetList.length < tweetListMax) {
+            // fill up the array
+            $scope.tweetList.push(tweet);
         }
-
-        // Update the current tweet occasionally
-        if (i%5) {
-            $scope.currentTweet = tweet;
+        else {
+            // replace tweet, rotate idx
+            $scope.tweetList.splice(tweetListIdx++, 1, tweet);
+            tweetListIdx = tweetListIdx%tweetListMax;
         }
     });
 

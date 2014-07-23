@@ -16,6 +16,18 @@
 
 <div class="row separator"></div>
 
+<!-- Tweet List -->
+<div class="row">
+	<div class="col-xs-12"><h3>Tweets:</h3></div>
+</div>
+<div class="row">
+	<!-- List out tweets -->
+	<div class="col-md-4 tweet-box" ng-repeat="tweet in tweetList">
+		<h5> {{ tweet.text }}</h5>
+		<h5> - {{ tweet.user.screen_name }}</h5>
+	</div>
+</div>
+
 
 <!-- Grid and tracking row -->
 <div class="row">

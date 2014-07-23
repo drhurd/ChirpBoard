@@ -10,14 +10,14 @@ angular.module('chirpBoardApp', [
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/board', {
+      .when('/', {
         templateUrl: 'partials/board',
         controller: 'BoardController'
       })
-      .when('/', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
-      })
+      // .when('/', {
+      //   templateUrl: 'partials/main',
+      //   controller: 'MainCtrl'
+      // })
       .otherwise({
         redirectTo: '/'
       });

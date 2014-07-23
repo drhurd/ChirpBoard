@@ -3,6 +3,13 @@
 	height: 25px;
 }
 
+/* Tweet list */
+.tweet-box {
+	height: 125px;
+	overflow: hidden;
+}
+
+/* Grid */
 .grid {
 	width: 100%;
 	margin-left: auto;
@@ -19,6 +26,8 @@
 	display: inline-block;
 }
 
+
+/* Sentiment Colors */
 .positive {
   background-color: #4DFA90;
 }
