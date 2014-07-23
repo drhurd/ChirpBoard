@@ -26,14 +26,20 @@ var io = require('socket.io').listen(server);
 
 // Set up twitter streaming 
 var Twit = require('node-tweet-stream');
-var twitterService = require('./lib/services/twitterService');
 var t = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY
   , consumer_secret: process.env.TWITTER_CONSUMER_SECRET
   , token: process.env.TWITTER_ACCESS_TOKEN
   , token_secret: process.env.TWITTER_TOKEN_SECRET
 });
-twitterService(io, t);
+
+// Set up AlchemyApi
+var AlchemyAPI = require('./lib/services/alchemyapi');
+var alchemyapi = new AlchemyAPI();
+
+// Enable twitterService
+var twitterService = require('./lib/services/twitterService');
+twitterService(io, t, alchemyapi);
 
 // Expose app
 exports = module.exports = app;

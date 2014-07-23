@@ -13,6 +13,7 @@ angular.module('chirpBoardApp')
 
     $scope.term = '';
     $scope.tweets = [];
+    $scope.currentTweet = null;
     $scope.terms = [];
 
     $scope.track = function() {
@@ -25,27 +26,33 @@ angular.module('chirpBoardApp')
     }
 
     $scope.color = function(tweet) {
-        var sentiment = tweet.analysis.sentiment;
-
-        if (sentiment > .25) {
-            return "positive";
-        }
-        else if (sentiment < - 0.25) {
-            return "neutral";
-        }
-        else {
-            return "negative";
-        }
+        return tweet.analysis.docSentiment.type;
     };
 
     // handle new tweets
+    var i = 0;
+    var max = 50;
     socket.on('tweet', function(tweet){
         console.log(tweet);
-        $scope.tweets.push(tweet);
 
-        // Limit number of tweets;
-        if ($scope.tweets.length > 25) {
-            $scope.tweets.pop();
+        if ($scope.tweets.length < max) {
+            // fill up the array
+            $scope.tweets.push(tweet);
+        }
+        else {
+            // replace tweet
+            $scope.tweets.splice(i, 1, tweet);
+        }
+
+        // 
+        i++;
+        if (i >= max) {
+            i = 0;
+        }
+
+        // Update the current tweet occasionally
+        if (i%5) {
+            $scope.currentTweet = tweet;
         }
     });
 
