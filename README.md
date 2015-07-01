@@ -5,7 +5,7 @@ Real time tweet streaming
 
 Chirpboard is a angularJS application that will livestream tweets you search for through AlchemyAPI(http://alchemyapi.com) sentiment analysis. The grid is color-coded by positive, negative, or neutral tweets.
 
-I started this project at MHacks (Fall 2013), but I've rebuilt it to make the UI better and to learn angularJS.
+I started this project at MHacks II (Fall 2013), but I've rebuilt it to make the UI better and to learn angularJS.
 
 Project is scaffolded using [yeoman](http://yeoman.io)'s [fullstack angular generator](https://github.com/DaftMonk/generator-angular-fullstack).
 
